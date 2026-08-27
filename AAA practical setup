@@ -26,7 +26,8 @@ When I opened my **Wazuh Dashboard** and searched for the word `malicious_actor`
 *   The exact fake name that was typed.
 *   It automatically labeled the alert as a **MITRE ATT&CK Brute Force attempt**.
 
- ./Authentication failure dashboard.png
+ ![Authentication Failure Dashboard](./Authentication%20failure%20dashboard.png)
+
 
 
 ---
