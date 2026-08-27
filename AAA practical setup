@@ -26,6 +26,9 @@ When I opened my **Wazuh Dashboard** and searched for the word `malicious_actor`
 *   The exact fake name that was typed.
 *   It automatically labeled the alert as a **MITRE ATT&CK Brute Force attempt**.
 
+![Wazuh Dashboard Alerts](./Authentication failure dashboard.png)
+
+
 ---
 
 ## 🔐 Exercise 2: Checking Permissions (Authorization Failure)
@@ -56,5 +59,7 @@ By expanding the log details, I saw exactly how the security agent parsed the da
 ---
 
 ## 💡 Key Lessons Learned for my SOC Career
-1. **Don't guess names, look for behavior:** In a real company, you don't know the hackers' names. Instead of searching for the word "intern", I can search for `rule.id: 5403` to instantly see *every single person* in the company who is trying to use admin commands.
-2. **If it isn't making noise, the SIEM won't see it:** Seeing "No results found" in a security dashboard is actually a good thing. It means nobody is breaking the rules. You have to physically cause the bad behavior in the lab for the dashboard to show you data.
+1. **Don't guess names, look for behavior:** In a real company, you don't know the hackers' names. Instead of searching for the word "intern", I can search for `rule.id: 5403` to instantly see 
+   *every single person* in the company who is trying to use admin commands.
+2. **If it isn't making noise, the SIEM won't see it:** Seeing "No results found" in a security dashboard is actually a good thing. It means nobody is breaking the rules. You have to physically cause the bad behavior
+    in the lab for the dashboard to show you data.
