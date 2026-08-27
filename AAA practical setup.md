@@ -70,6 +70,8 @@ By expanding the log details, I saw exactly how the security agent parsed the da
 *   `data.dstuser`: `root` (The master administrator account that was targeted).
 *   `data.command`: `/usr/sbin/adduser intern` (The exact administrative action that was taken).
 
+*   ![User detail](user.png)
+
 ---
 
 ## 💡 Key Lessons Learned for my SOC Career
