@@ -16,7 +16,8 @@ This file logs my first practical security exercises using my home lab. I tested
 
 ### Troubleshooting along the way:
 *   **The Problem:** At first, Kali Linux told me `Connection refused`. 
-*   **The Fix:** I realized the Lubuntu machine had its sharing doors closed. I logged into Lubuntu, opened the terminal, and installed the sharing software by typing `sudo apt install openssh-server`. Then I started the service by running `sudo systemctl start ssh`. After that, the connection went through perfectly.
+*   **The Fix:** I realized the Lubuntu machine had its sharing doors closed. I logged into Lubuntu, opened the terminal, and installed the sharing software by typing `sudo apt install openssh-server`.
+      Then I started the service by running `sudo systemctl start ssh`. After that, the connection went through perfectly.
 
 ### The Security Result (Accountability):
 When I opened my **Wazuh Dashboard** and searched for the word `malicious_actor`, the server found the logs instantly. It proved accountability by recording:
@@ -43,7 +44,8 @@ When I opened my **Wazuh Dashboard** and searched for the word `malicious_actor`
 *   **The Problem:** When I searched for the word `sudoers` in my Wazuh dashboard, it showed **0 results**. 
 *   **The First Fix:** I noticed my browser was stuck looking at an old machine profile ID (`agent.id: 001`). I clicked over to the global **Discover** tab to clear the filters.
 *   **The Second Fix:** Searching for `sudoers` still showed nothing. I changed my search word to **`intern`**, and suddenly **6 live logs** appeared on my screen! 
-*   **The Big Realization:** I learned that searching for a specific number like `rule.id: 5402` failed because that number tracks *wrong passwords*. Instead, I used a broad text search by typing **`rule.description: *sudo*`**. This revealed that my system actually logs successful admin actions under **Rule ID `5403`** ("First time user executed sudo").
+*   **The Big Realization:** I learned that searching for a specific number like `rule.id: 5402` failed because that number tracks *wrong passwords*. 
+     Instead, I used a broad text search by typing **`rule.description: *sudo*`**. This revealed that my system actually logs successful admin actions under **Rule ID `5403`** ("First time user executed sudo").
 
 ### The Security Result:
 By expanding the log details, I saw exactly how the security agent parsed the data into clean boxes:
