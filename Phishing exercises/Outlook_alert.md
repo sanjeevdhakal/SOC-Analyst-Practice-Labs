@@ -32,13 +32,13 @@ grep -E "From:|Received:" phishing_alert.eml
 *   **The Lie:** The display name stated it was from the "Microsoft Outlook Security Team."
 *   **The Truth:** The real underlying email address inside the mail headers was a consumer account ending in **`@gmail.com`**. Microsoft would never send an infrastructure warning from a consumer Google account.
 
-  ![Project Screenshot](assets/images/phishing grep.png)
+  ![Phishing](phishing grep.png)
 
 ### 2. Threat Intelligence Verification (OSINT)
 I extracted the malicious website domain button link from the message: `emailsecalerts.net`. I searched this domain on **VirusTotal** to check its reputation.
 *   **The Result:** **11 out of 92 security vendors** flagged the domain as highly dangerous, confirming it is an active **Phishing / Credential Harvester** setup designed to steal company employee passwords.
 
-  ![Project Screenshot](assets/images/url check.png)
+  ![Phishing](url check.png)
 
 ### 3. Impact Analysis via SIEM (Threat Hunting)
 The most critical phase of the investigation was checking if any employee fell for the trick and clicked the button link. 
@@ -46,7 +46,7 @@ The most critical phase of the investigation was checking if any employee fell f
 I logged into my **Wazuh SIEM Dashboard** and searched across the entire company network database for any logs matching: **`emailsecalerts.net`**.
 *   **The Result:** **0 Results Found.**
 
-  ![Project Screenshot](assets/images/SIEM output.png)
+  ![Phishing](SIEM output.png)
 
 ---
 
