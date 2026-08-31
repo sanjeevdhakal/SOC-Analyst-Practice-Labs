@@ -1,3 +1,38 @@
+# Phase 4: Advanced Email Security & Phishing Simulation Lab
+
+## 📋 Project Overview
+Email is the #1 vector used by cybercriminals to breach corporate networks. To truly understand how phishing attacks work and learn how to defend against them, I am expanding my home lab into a complete, private enterprise email ecosystem. 
+
+Instead of just reading textbook theories, I am building the mail servers from scratch, launching simulated attacks using Kali Linux, monitoring the traffic with my Wazuh SIEM, and executing full Security Operations Center (SOC) investigation playbooks.
+
+---
+
+## 🏗️ How the Lab is Set Up (The Simple Map)
+
+I am using three virtual machines connected to an isolated private network to simulate the entire lifecycle of an email attack:
+
+1. **The Attacker (Kali Linux):** 
+   Acts as the external hacker group. It uses automated tools to send fake emails, craft tracking links, fake domain names, and build malicious file attachments.
+2. **The Mail Post Office (Ubuntu Server):** 
+   Acts as our corporate Mail Exchange server using open-source tools called **Postfix** and **Dovecot**. It handles the delivery of messages and enforces company security rules.
+3. **The Target Employee (Lubuntu Client):** 
+   Acts as a regular office worker checking their inbox via a mail app (Thunderbird). This machine is monitored 24/7 by our **Wazuh Security Agent** to track if the user clicks a bad link or runs a dangerous file.
+
+---
+
+## 🛣️ My Learning Roadmap (Step-by-Step)
+
+I am breaking this advanced project down into small, practical steps to ensure complete hands-on mastery:
+
+*   **Step 1: Mail Infrastructure:** Learning how email travels across networks by setting up SMTP (delivery), IMAP (syncing), and POP3 protocols from scratch.
+*   **Step 2: Anti-Spoofing Defense:** Implementing corporate email authentication rules (**SPF, DKIM, and DMARC**) to physically block hackers from faking our company domain name.
+*   **Step 3: Hacker Reconnaissance:** Simulating how attackers sneak hidden "tracking pixels" into emails to secretly find out when a victim opens a message.
+*   **Step 4: Credential Harvesters:** Building copycat login pages to simulate how hackers trick employees into typing their corporate passwords.
+*   **Step 5: Malicious Attachments:** Packaging safe test payloads inside everyday office files (`.zip`, `.docx`, `.pdf`, `.xlsm` macros) to see how malware creates a hidden backdoor into a network.
+*   **Step 6: Automated Forensic Analysis:** Using real-world incident response tools like **PhishTool**, **Urlscan.io**, and **VirusTotal** to extract and evaluate threat evidence.
+*   **Step 7: SOC Incident Reporting:** Writing comprehensive, industry-standard triage summaries tracking affected users, defensive actions taken, and long-term security lessons learned.
+
+
 
     '''  [ PUBLIC INTERNET SIMULATION ]
              ┌──────────────────┴──────────────────┐
@@ -16,3 +51,4 @@
    │ - Thunderbird Mail / MailHog Sandbox Emulator            │
    │ - Wazuh Endpoint Security Monitoring Agent Enabled      │
    └─────────────────────────────────────────────────────────┘'''
+
