@@ -34,7 +34,7 @@ I am breaking this advanced project down into small, practical steps to ensure c
 
 
 
-  '''    [ PUBLIC INTERNET SIMULATION ]
+       '''[ PUBLIC INTERNET SIMULATION ]
              ┌──────────────────┴──────────────────┐
              ▼                                     ▼
    ┌───────────────────┐                 ┌───────────────────┐
