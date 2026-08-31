@@ -34,10 +34,8 @@ I am breaking this advanced project down into small, practical steps to ensure c
 
 
 
-      ```text
-   -----------------------------------------------------------------------------
-
-                [ PUBLIC INTERNET SIMULATION ]
+```text
+ [ PUBLIC INTERNET SIMULATION ]
              ┌──────────────────┴──────────────────┐
              ▼                                     ▼
    ┌───────────────────┐                 ┌───────────────────┐
@@ -54,7 +52,4 @@ I am breaking this advanced project down into small, practical steps to ensure c
    │ - Thunderbird Mail / MailHog Sandbox Emulator            │
    │ - Wazuh Endpoint Security Monitoring Agent Enabled      │
    └─────────────────────────────────────────────────────────┘
-   
-  
-----------------------------------------------------------------------------------
- ```
+```
