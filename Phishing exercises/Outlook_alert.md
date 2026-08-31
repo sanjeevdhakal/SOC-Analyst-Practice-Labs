@@ -9,6 +9,7 @@ I performed a full security investigation using text forensics, threat intellige
 RAW EMAIL HEADER
 -----------------
 
+```text
 Delivered-To: victim-employee@company.com
 Received: from ://google.com (://google.com.)
         by ://google.com with SMTPS id x11sor4321949vka.3.2026.08.20.10.30.00
@@ -18,6 +19,8 @@ From: Microsoft Outlook Security Team <outlook-alerts-noreply@gmail.com>
 To: victim-employee@company.com
 Subject: CRITICAL: Your Mailbox Will Be Closed - Verify Identity Now
 Date: Thu, 20 Aug 2026 17:30:00 +0000
+```
+
 
 
 ---
