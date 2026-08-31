@@ -1,4 +1,27 @@
- Advanced Email Security & Phishing Simulation Lab
+
+```text
+              [ PUBLIC INTERNET SIMULATION ]
+             ┌──────────────────┴──────────────────┐
+             ▼                                     ▼
+   ┌───────────────────┐                 ┌───────────────────┐
+   │    KALI LINUX     │                 │   UBUNTU SERVER   │
+   │ (Malicious Actor) │                 │  (Open-Source MX) │
+   │ - Spoofed Domains │                 │ - Postfix / Dovecot│
+   │ - Gophish Engine  │                 │ - ClamAV Scanner  │
+   └─────────┬─────────┘                 └─────────┬─────────┘
+             │                                     │
+             │ (Phishing Transmission)             │ (Internal Delivery)
+             ▼                                     ▼
+   ┌─────────────────────────────────────────────────────────┐
+   │                  LUBUNTU VICTIM CLIENT                  │
+   │ - Thunderbird Mail / MailHog Sandbox Emulator            │
+   │ - Wazuh Endpoint Security Monitoring Agent Enabled      │
+   └─────────────────────────────────────────────────────────┘
+```
+
+
+
+Advanced Email Security & Phishing Simulation Lab
 
 ## 📋 Project Overview
 Email is the #1 vector used by cybercriminals to breach corporate networks. To truly understand how phishing attacks work and learn how to defend against them, I am expanding my home lab into a complete, private enterprise email ecosystem. 
@@ -34,22 +57,4 @@ I am breaking this advanced project down into small, practical steps to ensure c
 
 
 
-```text
- [ PUBLIC INTERNET SIMULATION ]
-             ┌──────────────────┴──────────────────┐
-             ▼                                     ▼
-   ┌───────────────────┐                 ┌───────────────────┐
-   │    KALI LINUX     │                 │   UBUNTU SERVER   │
-   │ (Malicious Actor) │                 │  (Open-Source MX) │
-   │ - Spoofed Domains │                 │ - Postfix / Dovecot│
-   │ - Gophish Engine  │                 │ - ClamAV Scanner  │
-   └─────────┬─────────┘                 └─────────┬─────────┘
-             │                                     │
-             │ (Phishing Transmission)             │ (Internal Delivery)
-             ▼                                     ▼
-   ┌─────────────────────────────────────────────────────────┐
-   │                  LUBUNTU VICTIM CLIENT                  │
-   │ - Thunderbird Mail / MailHog Sandbox Emulator            │
-   │ - Wazuh Endpoint Security Monitoring Agent Enabled      │
-   └─────────────────────────────────────────────────────────┘
-```
+
