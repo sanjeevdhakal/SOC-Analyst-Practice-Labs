@@ -6,6 +6,20 @@ An employee reported receiving a suspicious email themed to look like a critical
 
 I performed a full security investigation using text forensics, threat intelligence tools, and centralized SIEM analytics to find out if the company was compromised.
 
+RAW EMAIL HEADER
+-----------------
+
+Delivered-To: victim-employee@company.com
+Received: from ://google.com (://google.com.)
+        by ://google.com with SMTPS id x11sor4321949vka.3.2026.08.20.10.30.00
+        For <victim-employee@company.com>;
+        Thu, 20 Aug 2026 10:30:00 -0700 (PDT)
+From: Microsoft Outlook Security Team <outlook-alerts-noreply@gmail.com>
+To: victim-employee@company.com
+Subject: CRITICAL: Your Mailbox Will Be Closed - Verify Identity Now
+Date: Thu, 20 Aug 2026 17:30:00 +0000
+
+
 ---
 
 ## 🔍 Investigation Steps & Findings
@@ -18,15 +32,21 @@ grep -E "From:|Received:" phishing_alert.eml
 *   **The Lie:** The display name stated it was from the "Microsoft Outlook Security Team."
 *   **The Truth:** The real underlying email address inside the mail headers was a consumer account ending in **`@gmail.com`**. Microsoft would never send an infrastructure warning from a consumer Google account.
 
+  ![Project Screenshot](assets/images/phishing grep.png)
+
 ### 2. Threat Intelligence Verification (OSINT)
 I extracted the malicious website domain button link from the message: `emailsecalerts.net`. I searched this domain on **VirusTotal** to check its reputation.
 *   **The Result:** **11 out of 92 security vendors** flagged the domain as highly dangerous, confirming it is an active **Phishing / Credential Harvester** setup designed to steal company employee passwords.
+
+  ![Project Screenshot](assets/images/url check.png)
 
 ### 3. Impact Analysis via SIEM (Threat Hunting)
 The most critical phase of the investigation was checking if any employee fell for the trick and clicked the button link. 
 
 I logged into my **Wazuh SIEM Dashboard** and searched across the entire company network database for any logs matching: **`emailsecalerts.net`**.
 *   **The Result:** **0 Results Found.**
+
+  ![Project Screenshot](assets/images/SIEM output.png)
 
 ---
 
