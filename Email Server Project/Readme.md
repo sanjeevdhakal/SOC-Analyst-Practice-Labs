@@ -1,4 +1,4 @@
-# Phase 4: Advanced Email Security & Phishing Simulation Lab
+ Advanced Email Security & Phishing Simulation Lab
 
 ## 📋 Project Overview
 Email is the #1 vector used by cybercriminals to breach corporate networks. To truly understand how phishing attacks work and learn how to defend against them, I am expanding my home lab into a complete, private enterprise email ecosystem. 
@@ -34,7 +34,7 @@ I am breaking this advanced project down into small, practical steps to ensure c
 
 
 
-    '''  [ PUBLIC INTERNET SIMULATION ]
+  '''    [ PUBLIC INTERNET SIMULATION ]
              ┌──────────────────┴──────────────────┐
              ▼                                     ▼
    ┌───────────────────┐                 ┌───────────────────┐
