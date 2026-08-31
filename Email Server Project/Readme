@@ -1,1 +1,18 @@
 
+    '''  [ PUBLIC INTERNET SIMULATION ]
+             ┌──────────────────┴──────────────────┐
+             ▼                                     ▼
+   ┌───────────────────┐                 ┌───────────────────┐
+   │    KALI LINUX     │                 │   UBUNTU SERVER   │
+   │ (Malicious Actor) │                 │  (Open-Source MX) │
+   │ - Spoofed Domains │                 │ - Postfix / Dovecot│
+   │ - Gophish Engine  │                 │ - ClamAV Scanner  │
+   └─────────┬─────────┘                 └─────────┬─────────┘
+             │                                     │
+             │ (Phishing Transmission)             │ (Internal Delivery)
+             ▼                                     ▼
+   ┌─────────────────────────────────────────────────────────┐
+   │                  LUBUNTU VICTIM CLIENT                  │
+   │ - Thunderbird Mail / MailHog Sandbox Emulator            │
+   │ - Wazuh Endpoint Security Monitoring Agent Enabled      │
+   └─────────────────────────────────────────────────────────┘'''
