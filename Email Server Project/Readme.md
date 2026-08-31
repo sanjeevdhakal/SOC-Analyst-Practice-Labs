@@ -55,6 +55,6 @@ I am breaking this advanced project down into small, practical steps to ensure c
    │ - Wazuh Endpoint Security Monitoring Agent Enabled      │
    └─────────────────────────────────────────────────────────┘
    
-   ```
+  
 ----------------------------------------------------------------------------------
-
+ ```
