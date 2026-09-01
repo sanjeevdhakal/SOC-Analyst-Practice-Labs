@@ -59,6 +59,9 @@ Finally, we run a network check command to verify that our mail server is active
 ss -tuln | grep :25
 ```
 
+
+  ![SMTP](SMTP.png)
+
 ### Expected Output:
 If the setup is working correctly, we will see a text line on your screen containing the word **`LISTEN`** right next to **`*:25`**. This means our private network post office is officially live and waiting to process messages!
 
