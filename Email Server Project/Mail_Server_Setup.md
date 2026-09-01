@@ -95,7 +95,7 @@ sudo nano /etc/dovecot/conf.d/10-mail.conf
 ```
 Locate the `mail_location` tracking variable line and update it exactly to:
 ```text
-mail_location = maildir:~/Maildir
+mail_path = maildir:~/Maildir
 ```
 Save and close the file (`Ctrl + O` -> `Enter` -> `Ctrl + X`).
 
