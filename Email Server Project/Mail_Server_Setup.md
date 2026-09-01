@@ -65,3 +65,50 @@ ss -tuln | grep :25
 ### Expected Output:
 If the setup is working correctly, we will see a text line on your screen containing the word **`LISTEN`** right next to 0.0.0.0:25 and [::]:25. This means our private network post office is officially live and waiting to process messages!
 
+
+---
+
+## 📬 Step 5: Installing and Configuring Dovecot (IMAP Storage)
+
+While Postfix handles delivering mail (SMTP), we need a separate engine to handle storing and syncing mail folders so users can read them. We use an open-source system called **Dovecot** to provide IMAP capabilities.
+
+Run this installation command in your Ubuntu Server terminal:
+```bash
+sudo apt install -y dovecot-imapd dovecot-pop3d
+```
+
+### 1. Activating IMAP Protocols
+We need to tell Dovecot to explicitly listen for email reading requests. Open the main configuration file:
+```bash
+sudo nano /etc/dovecot/dovecot.conf
+```
+Find the `protocols` line and adjust it to look exactly like this:
+```text
+protocols = imap pop3
+```
+Save and close the file (`Ctrl + O` -> `Enter` -> `Ctrl + X`).
+
+### 2. Mapping the Storage Directory Location
+Dovecot needs to look inside the exact same folder structure where Postfix drops the incoming mail. Open the directory rules file:
+```bash
+sudo nano /etc/dovecot/conf.d/10-mail.conf
+```
+Locate the `mail_location` tracking variable line and update it exactly to:
+```text
+mail_location = maildir:~/Maildir
+```
+Save and close the file (`Ctrl + O` -> `Enter` -> `Ctrl + X`).
+
+### 3. Activating and Verifying the Sync Engine
+Restart the Dovecot tracking engine to apply all changes and set it to load automatically on server startup:
+```bash
+sudo systemctl restart dovecot && sudo systemctl enable dovecot
+```
+
+Finally, check that both SMTP (Port 25) and IMAP (Port 143) are officially running on your network infrastructure loop:
+```bash
+ss -tuln | grep -E ":25|:143"
+```
+
+![IMAP](IMAP.png)
+
