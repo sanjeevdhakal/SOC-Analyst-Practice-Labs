@@ -63,5 +63,5 @@ ss -tuln | grep :25
   ![SMTP](SMTP.png)
 
 ### Expected Output:
-If the setup is working correctly, we will see a text line on your screen containing the word **`LISTEN`** right next to **`*:25`**. This means our private network post office is officially live and waiting to process messages!
+If the setup is working correctly, we will see a text line on your screen containing the word **`LISTEN`** right next to 0.0.0.0:25 and [::]:25. This means our private network post office is officially live and waiting to process messages!
 
