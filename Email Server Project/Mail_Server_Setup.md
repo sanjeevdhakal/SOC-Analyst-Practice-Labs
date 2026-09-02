@@ -161,7 +161,7 @@ From: Sanjeev <dhakalsanjeev@azuh-server>
 this is a local security infrastructure connection test.
 ```
 
-![email_test_header](email_test_header)
+![email_test_header](email_test_header.png)
 ### Analysis Finding:
 The raw metadata structure confirms that internal routing functionality over SMTP (Port 25) is fully operating. The local mail delivery system perfectly mapped the data payload straight to the target home profile partition directory.
 
