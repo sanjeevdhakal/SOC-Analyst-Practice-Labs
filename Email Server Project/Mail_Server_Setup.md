@@ -112,11 +112,58 @@ ss -tuln | grep -E ":25|:143"
 
 ![IMAP](IMAP.png)
 
-Step 6: Creating Local Corporate User Profiles
+## Step 6: Creating Local Corporate User Profiles
 
 To test enterprise authentication and message routing flows, two dedicated non-privileged user accounts were created directly on the core server infrastructure:
-1.  **HR Manager Endpoint:** `hr-manager@corporate-firm.local`
-2.  **Executive CEO Endpoint:** `exec-ceo@corporate-firm.local`
+1.  **HR Manager Endpoint:** `hr-manager@corporate-firm.local`  sudo adduser hr-manager
+2.  **Executive CEO Endpoint:** `exec-ceo@corporate-firm.local` sudo adduser exec-ceo
+
 
 These accounts automatically generated secure personal `Maildir/` folders inside their respective Linux user profiles to store telemetry tracking data.
+
+---
+
+## 🧪 Step 7: Native Delivery Pipeline Validation
+
+To confirm absolute system integration between the core Linux account management framework and the Postfix mail transfer daemon, an internal diagnostic email string was initiated natively via the command line interface:
+
+```bash
+echo "this is a local security infrastructure connection test." | mail -s "Lab Verification" hr-manager@corporate-firm.local
+```
+
+### Forensic Storage Verification:
+Checked the underlying user storage partition path using directory verification tools:
+```bash
+sudo ls -l /home/hr-manager/Maildir/new/
+```
+
+### Result Findings:
+The server successfully intercepted the network routing string and dynamically built a unique cryptographic text block artifact file within the endpoint target's inbox directory layout. This completes the core server infrastructure verification check phase.
+
+![test_email](test_email.png)
+
+### Raw Header Metadata Verification
+Switched to root privileges (`sudo -i`) and navigated directly into the user endpoint's secure mailbox partition directory to audit the raw message headers:
+
+```text
+Return-Path: <dhakalsanjeev@azuh-server>
+X-Original-To: hr-manager@corporate-firm.local
+Delivered-To: hr-manager@corporate-firm.local
+Received: by azuh-server (Postfix, from userid 1000)
+    id 67C23200602; Wed, 02 Sep 2026 10:37:53 +0000 (UTC)
+Subject: Lab Verification
+To: <hr-manager@corporate-firm.local>
+User-Agent: mail (GNU Mailutils 3.20)
+Date: Wed, 2 Sep 2026 10:37:53 +0000
+Message-Id: <20260902103753.67C23200602@azuh-server>
+From: Sanjeev <dhakalsanjeev@azuh-server>
+
+this is a local security infrastructure connection test.
+```
+
+![email_test_header](email_test_header)
+### Analysis Finding:
+The raw metadata structure confirms that internal routing functionality over SMTP (Port 25) is fully operating. The local mail delivery system perfectly mapped the data payload straight to the target home profile partition directory.
+
+
 
