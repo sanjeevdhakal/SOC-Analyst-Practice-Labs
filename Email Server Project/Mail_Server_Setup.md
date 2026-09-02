@@ -112,3 +112,11 @@ ss -tuln | grep -E ":25|:143"
 
 ![IMAP](IMAP.png)
 
+Step 6: Creating Local Corporate User Profiles
+
+To test enterprise authentication and message routing flows, two dedicated non-privileged user accounts were created directly on the core server infrastructure:
+1.  **HR Manager Endpoint:** `hr-manager@corporate-firm.local`
+2.  **Executive CEO Endpoint:** `exec-ceo@corporate-firm.local`
+
+These accounts automatically generated secure personal `Maildir/` folders inside their respective Linux user profiles to store telemetry tracking data.
+
