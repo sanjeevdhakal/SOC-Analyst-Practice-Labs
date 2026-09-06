@@ -182,13 +182,13 @@ Scroll all the way to the very bottom of the file using  arrow keys and add a cl
 
 2.  **App Configuration:** Initialized Thunderbird and mapped incoming sync actions explicitly over IMAP (Port 143) and outgoing transmission rules over SMTP (Port 25).
 
-![incoming_server](incoming_server)
+![incoming_server](incoming_server.png)
 
-![outgoing_server](outgoing_server)
+![outgoing_server](outgoing_server.png)
    
 
    
 3. **Validation Success:** Confirmed the mail interface successfully synchronized with the backend storage partition, downloading the original `Lab Verification` sample email cleanly into the user interface.
 
-![email_test](email_test)
+![email_test](email_test.png)
 
