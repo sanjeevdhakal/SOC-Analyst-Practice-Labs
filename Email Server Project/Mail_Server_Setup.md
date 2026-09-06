@@ -93,7 +93,7 @@ Dovecot needs to look inside the exact same folder structure where Postfix drops
 ```bash
 sudo nano /etc/dovecot/local.conf
 ```
-Locate the `mail_location` tracking variable line and update it exactly to:
+Locate the `mail_path` tracking variable line and update it exactly to:
 ```text
 # 1. Enforce the exact folder paths on the disk layout
 mail_driver = maildir
