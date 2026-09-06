@@ -227,7 +227,7 @@ The Mailbox App (The Graphical Email Client): The visual interface the employee 
 
 ###############################################################################################################
 
-Step 1: Building the Post Office (The Mail Server)
+## Step 1: Building the Post Office (The Mail Server)
 
 The Tool We Used: Postfix and Dovecot running on an Ubuntu Server VM.
 
@@ -241,7 +241,7 @@ The Storage Vault (Dovecot): Handles sorting mail and holding it securely inside
 
 ###############################################################################################################
 
-Step 2: The Three Core Email Languages (The Protocols)
+## Step 2: The Three Core Email Languages (The Protocols)
 
 To move letters from an attacker to a server, or from a server to an employee, the computers must speak specific languages over designated network doors (Ports):
 
@@ -261,7 +261,7 @@ To move letters from an attacker to a server, or from a server to an employee, t
 
 ###############################################################################################################
 
-Step 3: Creating the People & Allocating Email Addresses
+## Step 3: Creating the People & Allocating Email Addresses
 
 Where are users created? 
 >Directly on the Ubuntu Server operating system database.In Linux architecture, a user account and an email address are the exact same thing. Linux treats email mailboxes like physical mail slots on an employee's office door.
@@ -278,7 +278,7 @@ Linux instantly performed three backend actions:
 
 ###############################################################################################################
 
-Step 4: Where are Emails Actually Saved? (The Maildir Format)
+## Step 4: Where are Emails Actually Saved? (The Maildir Format)
 
 The Directory Path: /home/username/Maildir/new/
 Emails are not magic database entries; they are simply raw text documents saved directly onto the server's hard drive!
@@ -298,7 +298,7 @@ Postfix stripped away the @corporate-firm.local domain suffix, saw the username 
 
 ###############################################################################################################
 
-Step 5: Connecting the Mailbox App (The Graphical Email Client)
+## Step 5: Connecting the Mailbox App (The Graphical Email Client)
 
 The Tool We Used: Thunderbird running on a Lubuntu Desktop VM.
 
