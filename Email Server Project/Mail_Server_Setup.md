@@ -165,5 +165,30 @@ this is a local security infrastructure connection test.
 ### Analysis Finding:
 The raw metadata structure confirms that internal routing functionality over SMTP (Port 25) is fully operating. The local mail delivery system perfectly mapped the data payload straight to the target home profile partition directory.
 
+---
+##  Step 8: Graphical Client Integration via Thunderbird
 
+To complete the full enterprise mail network environment layout, the endpoint client machine (`Lubuntu-Victim`) was configured to handle visual mail streams.
+
+1.  **Local Address Mapping:** Updated `/etc/hosts` to translate network IP address routing blocks (`192.168.42.130`) straight to the virtual domain identity path (`corporate-firm.local`).
+
+Because we are inside a private lab network, our Lubuntu machine doesn't automatically know that corporate-firm.local is the name of  Ubuntu Server. We need to map it in the local address book file.
+
+Lubuntu Victim VM
+sudo nano /etc/hosts
+
+Scroll all the way to the very bottom of the file using  arrow keys and add a clean new line that links Ubuntu Server's static IP address to our corporate domain name:
+192.168.42.130 corporate-firm.local
+
+2.  **App Configuration:** Initialized Thunderbird and mapped incoming sync actions explicitly over IMAP (Port 143) and outgoing transmission rules over SMTP (Port 25).
+
+![incoming_server](incoming_server)
+
+![outgoing_server](outgoing_server)
+   
+
+   
+3. **Validation Success:** Confirmed the mail interface successfully synchronized with the backend storage partition, downloading the original `Lab Verification` sample email cleanly into the user interface.
+
+![email_test](email_test)
 
