@@ -91,11 +91,28 @@ Save and close the file (`Ctrl + O` -> `Enter` -> `Ctrl + X`).
 ### 2. Mapping the Storage Directory Location
 Dovecot needs to look inside the exact same folder structure where Postfix drops the incoming mail. Open the directory rules file:
 ```bash
-sudo nano /etc/dovecot/conf.d/10-mail.conf
+sudo nano /etc/dovecot/local.conf
 ```
 Locate the `mail_location` tracking variable line and update it exactly to:
 ```text
-mail_path = maildir:~/Maildir
+# 1. Enforce the exact folder paths on the disk layout
+mail_driver = maildir
+mail_path = ~/Maildir
+mail_inbox_path = ~/Maildir
+maildir_stat_dirs = yes
+
+# 2. Allow plaintext password exchange over our private local network paths
+auth_allow_cleartext = yes
+auth_mechanisms = plain login
+
+# 3. Grant Dovecot permissions to look inside the Linux password database
+service auth {
+  unix_listener auth-userdb {
+    mode = 0660
+    group = shadow
+  }
+}
+
 ```
 Save and close the file (`Ctrl + O` -> `Enter` -> `Ctrl + X`).
 
