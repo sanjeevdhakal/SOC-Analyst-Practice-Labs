@@ -188,7 +188,7 @@ Scroll all the way to the very bottom of the file using  arrow keys and add a cl
    
 
    
-3. **Validation Success:** Confirmed the mail interface successfully synchronized with the backend storage partition, downloading the original `Lab Verification` sample email cleanly into the user interface.
+3. **Validation Success:** Confirmed the mail interface successfully synchronized with the backend storage partition, downloading the original `System Integration Success` sample email cleanly into the user interface.
 
 ![email_test](email_test.png)
 
