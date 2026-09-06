@@ -209,3 +209,106 @@ Scroll all the way to the very bottom of the file using  arrow keys and add a cl
 
 ![email_test](email_test.png)
 
+## SUMMARY: 
+
+
+The Corporate Email Architecture Blueprint
+
+To simulate email security and phishing in a real-world company, we had to build an enterprise email ecosystem from scratch inside our private lab. Every real-world email network requires four main ingredients:
+
+The Post Office (The Mail Server): A machine to route, deliver, and store messages.
+
+The Delivery Languages (The Network Protocols): The specific rules used to move text across the network.
+
+The People (The System Users): The employee profiles who own the inboxes.
+
+The Mailbox App (The Graphical Email Client): The visual interface the employee uses to read messages.Here is exactly how these pieces look, how they connect, and what we typed to build them.
+
+
+###############################################################################################################
+
+Step 1: Building the Post Office (The Mail Server)
+
+The Tool We Used: Postfix and Dovecot running on an Ubuntu Server VM.
+
+In the real world, companies like Google (Gmail) or Microsoft (Outlook) run massive mail servers. In our private lab, we turned our single Ubuntu Server into our own private corporate post office named corporate-firm.local.
+
+Inside this server, we split the post office into two separate departments:
+
+The Delivery Department (Postfix): Handles outgoing and incoming traffic moving between servers.
+
+The Storage Vault (Dovecot): Handles sorting mail and holding it securely inside the users' personal folders.
+
+###############################################################################################################
+
+Step 2: The Three Core Email Languages (The Protocols)
+
+To move letters from an attacker to a server, or from a server to an employee, the computers must speak specific languages over designated network doors (Ports):
+
+1. SMTP (Simple Mail Transfer Protocol) ──► Port 25
+> What it does: This is the language used to Send and Deliver mail.
+> How it works: When an email is transmitted across the network, it knocks on Port 25 and drops the text payload into the server's processing queue.
+> The Tool in our Lab: Postfix listens on Port 25.
+
+2. IMAP (Internet Message Access Protocol) ──► Port 143
+> What it does: This is the language used to Read and Sync mail folders.
+> How it works: When you look at an email on your phone or computer, IMAP leaves the message safely on the server and just lets you view a synchronized live copy of it. This is the global standard for modern businesses.
+> The Tool in our Lab: Dovecot listens on Port 143.
+
+3. POP3 (Post Office Protocol v3) ──► Port 110
+> What it does: An older, legacy language used to download mail.
+> How it works: It physically downloads the email to your computer and completely deletes it off the mail server. It is rarely used in modern corporate environments because you cannot sync multiple devices.
+
+###############################################################################################################
+
+Step 3: Creating the People & Allocating Email Addresses
+
+Where are users created? 
+>Directly on the Ubuntu Server operating system database.In Linux architecture, a user account and an email address are the exact same thing. Linux treats email mailboxes like physical mail slots on an employee's office door.
+
+when we ran these commands on our server: 
+
+sudo adduser hr-manager
+sudo adduser exec-ceo
+
+Linux instantly performed three backend actions:
+> It created a system user account profile with a password.
+> It built a physical home folder room on the hard drive located at /home/hr-manager/
+> Because Postfix is configured to own the domain name corporate-firm.local, the server automatically allocated the official email address hr-manager@corporate-firm.local.
+
+###############################################################################################################
+
+Step 4: Where are Emails Actually Saved? (The Maildir Format)
+
+The Directory Path: /home/username/Maildir/new/
+Emails are not magic database entries; they are simply raw text documents saved directly onto the server's hard drive!
+
+By configuring our server to use the Maildir/ format, we instructed the post office to create three subfolders inside each user's private home room:
+
+/Maildir/new/ ──► Where fresh, unread incoming emails land as separate text files.
+/Maildir/cur/ ──► Where opened, read emails are shifted.
+/Maildir/tmp/ ──► Where temporary sync index data is held.
+
+Example: 
+When we ran our terminal delivery test command:
+
+echo "Test message body" | mail -s "Subject Line" hr-manager@corporate-firm.local
+
+Postfix stripped away the @corporate-firm.local domain suffix, saw the username was hr-manager, opened their secure home path, and wrote a unique text file directly inside /home/hr-manager/Maildir/new/.
+
+###############################################################################################################
+
+Step 5: Connecting the Mailbox App (The Graphical Email Client)
+
+The Tool We Used: Thunderbird running on a Lubuntu Desktop VM.
+
+Employees don't read raw text documents inside dark server terminals; they use a clean, graphic window application like Outlook or Apple Mail. We used an open-source app called Thunderbird.
+
+To link the visual app on the employee's computer back to our Ubuntu mail server, we had to build a bridge across the network network cards using our manual configurations:
+
+Steps: 
+1. The Address Map (/etc/hosts): We edited Lubuntu's local host file to tell the computer: "Whenever you hear the name corporate-firm.local, drive straight down the private network path to the Ubuntu Server's IP address (192.168.42.130)."
+2. The Client Rules: We opened Thunderbird, typed in hr-manager@corporate-firm.local, and mapped the protocol doors manually:
+> Incoming: Speak IMAP over Port 143 to pull folder indexes down.
+> Outgoing: Speak SMTP over Port 25 to push new emails out
+
