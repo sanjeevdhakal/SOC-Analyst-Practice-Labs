@@ -76,3 +76,15 @@ We will see exactly two fresh files built side-by-side inside your terminal view
 default.private ──► The secret key. This is the confidential stamp Postfix will use to sign our emails.
 default.txt ──► The public key file. This contains the exact text configuration we need to publish so clients can verify our identity.
 
+---
+
+### ⚙️ Milestone 2 Logs: Linking Postfix to OpenDKIM
+Successfully linked our Postfix mail truck conveyor belt to the OpenDKIM signing tool over internal Port 8891. The server now automatically stamps an invisible digital identity code onto all outbound corporate mail.
+
+#### Our Generated Public Verification Record:
+```text
+default._domainkey      IN      TXT     ( "v=DKIM1; k=rsa; "
+          "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0r..." )
+```
+
+
