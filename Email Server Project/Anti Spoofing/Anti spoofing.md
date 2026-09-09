@@ -36,11 +36,6 @@ To build this defense, we will execute these three major laboratory milestones i
 
 ---
 
-## 🛠️ Step-by-Step Implementation Tracker
-
-- [x] **Step 1:** Install and configure **OpenDKIM** on our Ubuntu Server to generate our cryptographic digital keys.
-- [ ] **Step 2:** Create our **SPF** and **DMARC** rule files to establish our domain protection policy.
-- [ ] **Step 3:** Launch a simulated domain spoofing attack from **Kali Linux** to verify our new walls successfully block the threat.
 
 ---
 
