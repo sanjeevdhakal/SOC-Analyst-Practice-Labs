@@ -48,13 +48,13 @@ Successfully initialized the OpenDKIM engine package repositories and generated 
 
 Let's configure OpenDKIM to handle our domain in three easy steps.
 
-- [ ] **Step 1:** Create the Secret Key Vault
+- [ ] **Step 1:**  **Create the Secret Key Vault**
 
 First, we need a secure folder directory on the server to hold our cryptographic files. Run this command block to create the paths and move directly into it:
 
 sudo mkdir -p /etc/opendkim/keys/corporate-firm.local && cd /etc/opendkim/keys/corporate-firm.local
 
- - [ ] **Step 2:** Generate the Cryptographic Keys
+ - [ ] **Step 2:** **Generate the Cryptographic Keys**
 
 Now, we will run the key generation tool to build our asymmetric token pairs [🔎]. Type this command exactly and hit Enter:
 
@@ -66,7 +66,7 @@ What the flags mean:
 -d corporate-firm.local: Links the signature directly to your custom domain identity.
 
 
-- [ ] **Step 3:** Verify the Files on Your Disk
+- [ ] **Step 3:** **Verify the Files on Your Disk**
 
 Let's make sure the engine created your files correctly. Run a simple list directory command:
 
