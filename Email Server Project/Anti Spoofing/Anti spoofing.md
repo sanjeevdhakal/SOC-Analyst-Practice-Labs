@@ -125,3 +125,54 @@ default._domainkey      IN      TXT     ( "v=DKIM1; k=rsa; "
 ```
   ![Public Keys](public_key.png)
 
+
+
+### 📍 Step 7: Installing the SPF Policy Guard Assistant
+To force our server to actively verify the "Approved Delivery List" (SPF) of incoming emails, we installed the official Postfix policy checker tool:
+
+```bash
+sudo apt update && sudo apt install -y postfix-policyd-spf-python
+```
+
+### 📍 Step 8: Enforcing SPF Checks at the Front Door
+We opened the primary Postfix mail configuration file at `/etc/postfix/main.cf` and appended our strict validation policy block. This forces the server to cross-reference every incoming message against public SPF lists:
+
+```text
+# SPF Policy Enforcement Configuration
+policy-spf_time_limit = 3600s
+smtpd_recipient_restrictions = 
+    permit_mynetworks,
+    permit_sasl_authenticated,
+    reject_unauth_destination,
+    check_policy_service unix:private/policy-spf
+```
+
+### 📍 Step 9: Defining the Automated Checking Service Hook
+We opened the master processes execution map at `/etc/postfix/master.cf` and added a line at the bottom to spawn the policy assistant daemon whenever a new email knocks on our network door:
+
+```text
+policy-spf  unix  -       n       n       -       0       spawn
+  user=nobody argv=/usr/bin/policyd-spf
+```
+
+---
+
+## 🚦 Final Defensive Shield Settings (Summary)
+
+Our corporate post office domain (`@corporate-firm.local`) is now protected globally by three strict rules:
+
+1.  **DKIM:** Outbound emails are cryptographically stamped with a digital wax seal using the `default` selector tag.
+2.  **SPF (`v=spf1 ip4:192.168.42.130 -all`):** Declares that **only** our Ubuntu Server IP address is allowed to deliver mail for our company. Any other server trying to use our name will fail the check.
+3.  **DMARC (`p=quarantine`):** Mandates that if a fake email arrives and fails the identity checks, the server must automatically shove it straight into the user's Spam/Junk folder.
+
+---
+
+## 🚦 Final Verification
+We ran a full system service refresh to lock in the new policy rules:
+
+```bash
+sudo systemctl restart postfix
+```
+
+**Result:** The service loaded flawlessly with **zero errors**. The corporate anti-spoofing shield is 100% active, running, and ready to face simulated attacks!
+
