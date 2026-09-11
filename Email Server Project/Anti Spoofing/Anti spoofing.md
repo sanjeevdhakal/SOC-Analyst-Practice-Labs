@@ -51,6 +51,9 @@ sudo opendkim-genkey -s default -d corporate-firm.local
 1.  `default.private` (The secret stamp used by the server to sign outbound mail).
 2.  `default.txt` (The public verification file containing our public cryptographic key key).
 
+   
+  ![Keys](key_generation.png)
+
 ---
 
 ### 📍 Step 4: Configuring the OpenDKIM Database Mapping Tables
@@ -109,3 +112,16 @@ sudo systemctl restart opendkim postfix
 ```
 
 **Result:** Both services loaded with **zero errors**, confirming our encrypted mail validation pipeline is fully stable, interconnected, and ready for deployment!
+
+---
+
+### ⚙️ Linking Postfix to OpenDKIM
+Successfully linked our Postfix mail truck conveyor belt to the OpenDKIM signing tool over internal Port 8891. The server now automatically stamps an invisible digital identity code onto all outbound corporate mail.
+
+#### Our Generated Public Verification Record:
+```text
+default._domainkey      IN      TXT     ( "v=DKIM1; k=rsa; "
+          "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0r..." )
+```
+  ![Public Keys](public_key.png)
+
