@@ -73,6 +73,8 @@ Wazuh is incredibly strict about its layout rules. Everything must be tucked ins
 ```
 *Plain-English Logic:* This simple rule tells the server: *"The exact millisecond a new line of text appears inside `mail.log` (like an email arriving or an authentication check triggering), copy that text line and pull it straight onto our monitoring console dashboard!"*
 
+![rules](rules.png)
+
 ### 📍 Step 3: Refreshing the SIEM Master Engine
 To force the master manager to read our new instructions and activate the log channels, we ran a full system service restart:
 ```bash
