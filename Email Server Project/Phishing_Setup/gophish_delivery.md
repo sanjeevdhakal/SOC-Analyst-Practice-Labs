@@ -31,11 +31,58 @@ The Gophish administration portal loaded with 100% success inside Firefox. Port 
 
 ---
 
-### 🧠 Core Architectural Discovery: Manager-Side Native Telemetry
-During Phase 3 implementation, we discovered a key structural design rule of the Wazuh SIEM ecosystem:
+## 🧠 Core Architectural Discovery: The Wazuh Manager Secret
 
-1.  **Remote Monitoring (Lubuntu User VM):** Requires a standalone `wazuh-agent` client package to push data across network paths.
-2.  **Local Monitoring (Ubuntu Mail Server):** Because the machine already houses the master `wazuh-manager` engine, installing a standalone agent causes a software conflict. The Manager can parse its own host operating system logs natively.
+During this phase, we ran into a massive, fascinating technical lesson about how enterprise security software actually talks to a network.
 
-By embedding the `<localfile>` log path pointing to `/var/log/mail.log` directly inside the Manager's central `/var/ossec/etc/ossec.conf` file, we successfully established a direct telemetry link. Searching `postfix` on our SIEM dashboard automatically populated live mail transaction events, proving our blue-team visibility loop is fully operational.
+### ❌ The Conflict: Why We Couldn't Install the Standalone Agent
+When we tried to install a standalone tracking guard (`wazuh-agent`) onto our Ubuntu Server, the installation crashed with a strict system conflict error. 
 
+**Why it happened:** Our Ubuntu Server already houses the master brain of our security system—the **Wazuh Manager**. The manager application and the agent application use the exact same directory house folders on the hard drive (`/var/ossec/`). Trying to install both standalone programs forces them to fight over the same files, so the system blocked the installation to prevent database corruption.
+
+### 💡 The Solution: Native Self-Monitoring
+We discovered a "hidden gem" of security design: **The Wazuh Manager can monitor its own host computer natively!** It does not need a separate agent client service turned on because it already has a built-in log-reading engine sitting right inside its core processes. 
+
+To turn on the security cameras and watch our mail activity, we just had to point the Manager to the right text files using a single configuration file layout.
+
+---
+
+## 🛠️ Step-by-Step Implementation Guide
+
+### 📍 Step 1: Opening the Master Wazuh Configuration Brain
+We logged into our **Ubuntu Server terminal** and opened the central configuration blueprint file for the entire Wazuh server using the `nano` text editor:
+```bash
+sudo nano /var/ossec/etc/ossec.conf
+```
+
+### 📍 Step 2: Injecting the Mail Tracking Instructions
+Wazuh is incredibly strict about its layout rules. Everything must be tucked inside its proper "department." We scrolled to the top half of the document, located the native log collection section, and dropped a permanent command telling the manager to actively watch our mail and authentication text files:
+
+```xml
+<!-- Instructing Wazuh to watch our Postfix Mail Server transactions -->
+<localfile>
+  <log_format>syslog</log_format>
+  <location>/var/log/mail.log</location>
+</localfile>
+
+<!-- Instructing Wazuh to watch system login and security password attempts -->
+<localfile>
+  <log_format>syslog</log_format>
+  <location>/var/log/auth.log</location>
+</localfile>
+```
+*Plain-English Logic:* This simple rule tells the server: *"The exact millisecond a new line of text appears inside `mail.log` (like an email arriving or an authentication check triggering), copy that text line and pull it straight onto our monitoring console dashboard!"*
+
+### 📍 Step 3: Refreshing the SIEM Master Engine
+To force the master manager to read our new instructions and activate the log channels, we ran a full system service restart:
+```bash
+sudo systemctl restart wazuh-manager
+```
+
+---
+
+## 🚦 Final Verification (The Proof in the Dashboard)
+We logged into our web browser and opened the visual **Wazuh Dashboard**. When we typed **`postfix`** into the search bar, the console immediately populated live security tracking records matching our mail server! 
+
+This proves our entire infrastructure telemetry loop is 100% stable, fully interconnected, and actively waiting to map our upcoming Gophish attacks straight onto our **MITRE ATT&CK Matrix console**!
+![testlog](test_log)
