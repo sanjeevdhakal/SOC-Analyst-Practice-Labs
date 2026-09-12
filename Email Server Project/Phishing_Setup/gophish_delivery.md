@@ -28,3 +28,14 @@ sudo gophish-start
 ![dashboard](gophish_dashboard.png)
 ## 🎯 Current Lab Status
 The Gophish administration portal loaded with 100% success inside Firefox. Port 3333 is actively listening on our localhost loopback, confirming Phase 3 Milestone 1 is completely operational!
+
+---
+
+### 🧠 Core Architectural Discovery: Manager-Side Native Telemetry
+During Phase 3 implementation, we discovered a key structural design rule of the Wazuh SIEM ecosystem:
+
+1.  **Remote Monitoring (Lubuntu User VM):** Requires a standalone `wazuh-agent` client package to push data across network paths.
+2.  **Local Monitoring (Ubuntu Mail Server):** Because the machine already houses the master `wazuh-manager` engine, installing a standalone agent causes a software conflict. The Manager can parse its own host operating system logs natively.
+
+By embedding the `<localfile>` log path pointing to `/var/log/mail.log` directly inside the Manager's central `/var/ossec/etc/ossec.conf` file, we successfully established a direct telemetry link. Searching `postfix` on our SIEM dashboard automatically populated live mail transaction events, proving our blue-team visibility loop is fully operational.
+
