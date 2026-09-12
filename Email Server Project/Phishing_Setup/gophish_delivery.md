@@ -25,6 +25,6 @@ sudo gophish-start
 *   **Default Master Password Account Hook:** `kali-gophish`
 
 ---
-[!dashboard](gophish_dashboard.png)
+![dashboard](gophish_dashboard.png)
 ## 🎯 Current Lab Status
 The Gophish administration portal loaded with 100% success inside Firefox. Port 3333 is actively listening on our localhost loopback, confirming Phase 3 Milestone 1 is completely operational!
