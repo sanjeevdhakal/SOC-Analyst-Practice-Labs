@@ -31,7 +31,7 @@ The Gophish administration portal loaded with 100% success inside Firefox. Port 
 
 ---
 
-## 🧠 Core Architectural Discovery: The Wazuh Manager Secret
+## 🧠 MITRE ATT&CK Implementation & Core Architectural Discovery: The Wazuh Manager Secret
 
 During this phase, we ran into a massive, fascinating technical lesson about how enterprise security software actually talks to a network.
 
@@ -85,4 +85,4 @@ sudo systemctl restart wazuh-manager
 We logged into our web browser and opened the visual **Wazuh Dashboard**. When we typed **`postfix`** into the search bar, the console immediately populated live security tracking records matching our mail server! 
 
 This proves our entire infrastructure telemetry loop is 100% stable, fully interconnected, and actively waiting to map our upcoming Gophish attacks straight onto our **MITRE ATT&CK Matrix console**!
-![testlog](test_log)
+![testlog](test_log.png)
