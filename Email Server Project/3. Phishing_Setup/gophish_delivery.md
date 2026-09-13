@@ -95,6 +95,9 @@ This proves our entire infrastructure telemetry loop is 100% stable, fully inter
 
 We successfully fired our first simulated email attack from our **Kali Linux station (Gophish)** straight through our **Ubuntu Mail Server**! The email landed perfectly inside our employee's visual **Thunderbird Inbox on Lubuntu**, confirming our core network connection pathways are 100% active.
 
+![send](sending_profile.jpg)
+![test](test_email.jpg)
+
 ### 🕵️‍♂️ Blue Team Forensic Log Analysis
 To prove our security cameras were watching, we dropped into the dark Ubuntu Server terminal and ran a direct command to read our raw system transaction logs (`sudo tail -n 20 /var/log/mail.log`). 
 
@@ -126,7 +129,10 @@ Our infrastructure testing phase is now **100% complete, verified, and locked in
 ### 1. Structural Spoofing Analysis
 Visually, the email received by the Lubuntu endpoint workspace renders as an authentic transmission originating from the verified internal corporate address `exec-ceo@corporate-firm.local`. 
 
+![received](spam_received.png)
+
 However, system forensic validation confirms the payload is an external counterfeit. While the frontend visual interface displays corporate branding, extraction of the raw email headers via the mail client (`Ctrl + U`) leaks the underlying delivery footprint, tracking the origin IP routing loop back to the malicious Kali Linux attack platform rather than the authenticated internal server cluster database.
+![header](email_header.png)
 
 ### 2. Verified MITRE ATT&CK Matrix Mapping
 This malicious operational lifecycle maps directly to the following adversarial tracking vectors inside the global MITRE framework matrix:
