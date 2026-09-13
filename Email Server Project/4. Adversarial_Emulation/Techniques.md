@@ -11,9 +11,15 @@ This playbook documents the implementation of three major hacking techniques exe
 
 ---
 
+---
+
 ## 🔑 Technique 2: Credential Harvesting (Copycat Login Portals)
 *   **MITRE ATT&CK ID:** Tactic: Initial Access | Phishing: Spearphishing Link (**T1566.002**)
-*   **Status:** ⏳ NOT STARTED
+*   **Status:** ✅ 100% COMPLETE
+
+### 🛠️ Implementation Summary
+Successfully compiled a custom HTML credential verification form inside the local Gophish database layer. The portal code structure was injected manually to bypass upstream internet routing blocks. The page is configured with automated keystroke tracking variables to intercept inbound credential data strings before redirecting the target user endpoint to an external resource link.
+![Landing_page](landing_page.png)
 
 ---
 
