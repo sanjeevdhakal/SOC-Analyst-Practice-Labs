@@ -119,3 +119,21 @@ We analyzed why our fake email landed in the clean primary Inbox rather than get
 
 Our infrastructure testing phase is now **100% complete, verified, and locked in!**
 
+---
+
+## 🕵️‍♂️ Incident Forensic Log: Analyzing the Fake CEO Payload
+
+### 1. Structural Spoofing Analysis
+Visually, the email received by the Lubuntu endpoint workspace renders as an authentic transmission originating from the verified internal corporate address `exec-ceo@corporate-firm.local`. 
+
+However, system forensic validation confirms the payload is an external counterfeit. While the frontend visual interface displays corporate branding, extraction of the raw email headers via the mail client (`Ctrl + U`) leaks the underlying delivery footprint, tracking the origin IP routing loop back to the malicious Kali Linux attack platform rather than the authenticated internal server cluster database.
+
+### 2. Verified MITRE ATT&CK Matrix Mapping
+This malicious operational lifecycle maps directly to the following adversarial tracking vectors inside the global MITRE framework matrix:
+
+*   **Tactic:** Initial Access ──► **Technique:** Phishing: Spearphishing Link (**T1566.002**)
+    *   *Application:* Targeting specific corporate roles (`hr-manager`) with high-privilege corporate identities to bypass human authentication checks.
+*   **Tactic:** Defense Evasion ──► **Technique:** Masquerading (**T1036**)
+    *   *Application:* Injecting trusted local address strings into raw SMTP mail envelope parameters to trick mail routing engines and user mailbox layouts.
+
+
