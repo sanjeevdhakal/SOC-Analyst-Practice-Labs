@@ -88,3 +88,34 @@ We logged into our web browser and opened the visual **Wazuh Dashboard**. When w
 
 This proves our entire infrastructure telemetry loop is 100% stable, fully interconnected, and actively waiting to map our upcoming Gophish attacks straight onto our **MITRE ATT&CK Matrix console**!
 ![testlog](test_log.png)
+
+---
+
+## 🏁 Phase 3 Core Testing: Phishing Simulation
+
+We successfully fired our first simulated email attack from our **Kali Linux station (Gophish)** straight through our **Ubuntu Mail Server**! The email landed perfectly inside our employee's visual **Thunderbird Inbox on Lubuntu**, confirming our core network connection pathways are 100% active.
+
+### 🕵️‍♂️ Blue Team Forensic Log Analysis
+To prove our security cameras were watching, we dropped into the dark Ubuntu Server terminal and ran a direct command to read our raw system transaction logs (`sudo tail -n 20 /var/log/mail.log`). 
+
+The terminal output displayed the absolute "Smoking Gun" evidence of our attack:
+*   `connect from unknown[...]` ──► Caught the Kali Linux hacker machine knocking on our network doors.
+*   `from=<exec-ceo@...>` ──► Captured the fake sender profile faking our CEO's identity.
+*   `status=sent (delivered to maildir)` ──► Confirmed the server accepted the message and wrote it straight onto the hard drive partition.
+
+---
+
+### 💡 Critical Cybersecurity Lessons Learned
+
+During this live fire test, we uncovered two massive real-world security concepts:
+
+#### 1. Fixing a Hidden Syntax Bug
+Our terminal logs revealed a hidden typo inside our security files (`policyd-spf.conf`). The system threw an error because we left empty spaces around an equal (`=`) sign. This syntax error temporarily crashed our SPF checking tool. We fixed this instantly by removing the spaces, forcing our defensive shield to wake up completely.
+
+#### 2. Why the Fake Email Slipped Past the Shield
+We analyzed why our fake email landed in the clean primary Inbox rather than getting kicked straight to a Spam folder:
+*   **The Trusted Network Loophole:** Our server is configured to automatically trust and wave through any traffic coming from its own internal local lab network. Because Kali is on our local switch, it bypassed external internet verification.
+*   **Simple Email Clients:** Local applications like Thunderbird do not have built-in AI spam filters. They simply display whatever files the mail server drops into the inbox folder. 
+
+Our infrastructure testing phase is now **100% complete, verified, and locked in!**
+
