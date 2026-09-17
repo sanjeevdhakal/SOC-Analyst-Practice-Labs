@@ -35,7 +35,7 @@ We logged onto our **Lubuntu Victim VM**, opened the **Thunderbird** mail client
 *   **The Security Behavior:** By default, Thunderbird's privacy engine blocked external remote content, keeping our tracking pixel asleep.
   ![email](email.png)
 *   **The Breakthrough:** The exact second we clicked **`Allow Remote Content`** inside Thunderbird's alert bar, the mail client downloaded the invisible pixel, and our **Kali Linux Gophish dashboard immediately spiked from 0 to 1 under `Email Opened`**, confirming total tracking success.
-* ![email_opened](email_opened)
+* ![email_opened](email_opened.png)
 
 ---
 
