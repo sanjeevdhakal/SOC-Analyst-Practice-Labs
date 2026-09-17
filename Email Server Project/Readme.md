@@ -119,13 +119,7 @@ With all systems fully interconnected, we simulated three advanced adversarial t
 * *The Attack:* Inside Gophish's `Landing Pages` tab, we hit raw code entry view and manually compiled a custom HTML verification portal mockup complete with input forms, an encrypted lock logo icon, and a blue submit button. We checked both `Capture Submitted Data` and `Capture Passwords` options and configured a stealth redirect link leading to `google.com`.
 * *The Result:* We linked this fake page directly to the bold blue text inside our email template. The user clicked the link, filled out their credentials (`username: sanjeev@gmail.com` / `password: Hello123!`), and hit submit. The browser seamlessly tossed them to the real Google website to avoid suspicion, while **Gophish intercepted their keyboard text buffers over the wire, capturing the plaintext secrets live inside our attacker database database table fields!**
 
-#### 📦 Technique 3: Malicious Attachments (Simulating Backdoor Deliveries)
-* *The Attack:* On Kali, we manufactured a mock attack script (`corporate_trap.sh`) designed to simulate a runaway adware loop by forcing Lubuntu to infinitely open browser tabs until system memory froze. We zipped this script into an archive container named `payroll_updates.zip`, attached it to a financial bonus email template in Gophish, and launched the campaign.
-* *The Forensics:* The file bypassed simple filtering layers because it originated from our trusted local sandbox network loop range (`permit_mynetworks`). By dropping into the server terminal and filtering by timestamp (`sudo grep "15:44" /var/log/mail.log`), we extracted the raw metadata transaction logs proving the file size metrics were written right down to the disk sector tracks.
 
----
-
-### 🧠 Phase 5: Custom SIEM Detection Optimization
 
 
 
