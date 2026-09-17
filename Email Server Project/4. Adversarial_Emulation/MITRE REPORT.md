@@ -1,4 +1,4 @@
----
+
 
 ## 📊 MITRE ATT&CK Adversarial Emulation Mapping Report
 
