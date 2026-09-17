@@ -19,17 +19,23 @@ We logged into our **Gophish Admin Panel** over secure browser port `https://127
 *   **Template Name:** `Urgent Security Policy Update`
 *   **Subject Line:** `ACTION REQUIRED: Mandatory Corporate Password Synchronization`
 
+*   ![email_template](email_template.png)
+
 #### Step 2: Hiding the Tracking Code
 We clicked directly on Gophish's **`HTML` view tab** to modify the raw underlying script lines of the email body. We added our urgent corporate IT text warning and placed Gophish's native tracking shortcut right at the absolute bottom line of the text pool:
 ```text
 {{.Tracker}}
 ```
 *Plain-English Logic:* When the campaign launches, this simple shorthand code tells Gophish to automatically manufacture an invisible, transparent image tag wrapper and tuck it hidden into the outbound mail package.
+![campaign](campaign.png)
+
 
 #### Step 3: Triggering the Trap on the Target Machine
 We logged onto our **Lubuntu Victim VM**, opened the **Thunderbird** mail client, and clicked `Get Messages`. The deceptive email arrived safely in our inbox. 
-*   **The Security Behavior:** By default, Thunderbird's privacy engine blocked external remote content, keeping our tracking pixel asleep. 
+*   **The Security Behavior:** By default, Thunderbird's privacy engine blocked external remote content, keeping our tracking pixel asleep.
+  ![email](email.png)
 *   **The Breakthrough:** The exact second we clicked **`Allow Remote Content`** inside Thunderbird's alert bar, the mail client downloaded the invisible pixel, and our **Kali Linux Gophish dashboard immediately spiked from 0 to 1 under `Email Opened`**, confirming total tracking success.
+* ![email_opened](email_opened)
 
 ---
 
@@ -55,12 +61,14 @@ Inside our Gophish browser panel, we clicked on `Landing Pages` and selected `+ 
     </form>
 </div>
 ```
+![landing_page](landing_page.png)
 
 #### Step 2: Arming the Keylogger Hooks
 To turn our static visual mockup webpage into an active trap capable of stealing data, we scrolled directly beneath the HTML code text window and activated two critical configuration checkboxes:
 *   [x] **Capture Submitted Data** ──► *Tells Gophish to record user keystroke events.*
 *   [x] **Capture Passwords** ──► *Forces Gophish to extract raw password text strings.*
 *   **Redirect To:** We pasted `https://google.com` into the redirect text field. This guarantees that the split second the user types their keys and clicks submit, they are instantly thrown to the real Google website. They assume the page simply glitched or refreshed, completely hiding the fact that they were hacked.
+  ![login_trap](login_trap.png)
 
 #### Step 3: Launching the Campaign Interconnection Relay
 We clicked over to the `Campaigns` menu bar, selected `+ New Campaign`, and stitched all our independent lab pieces together:
@@ -73,5 +81,7 @@ We returned to our **Lubuntu Victim VM**, opened the fresh email message, and cl
 We typed our testing data into the active prompt fields and clicked submit:
 *   **Target Username Entered:** `sanjeev@gmail.com`
 *   **Target Password Entered:** `Hello123!`
+
+  ![trap_stat](trap_stat.png)
 
 The user browser session immediately redirected to the real Google landing page seamlessly. When we returned to our **Kali Linux Gophish dashboard timeline**, the **`Submitted Data` dial exploded to 1**. We opened the target expansion menu, and our attacker database displayed the exact, unencrypted plaintext username and password strings cleanly harvested off the victim's keyboard buffers!
